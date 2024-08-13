@@ -3,9 +3,6 @@
   "license": "MIT",
   "main": "index.js",
   "description": "Helpers library for Jobber app",
-  "engines": {
-    "node": ">=18"
-  },
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm && tsc --outDir build/src && node scripts/build-package.js",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/cjs --source-maps",
