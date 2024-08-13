@@ -1,4 +1,6 @@
 # EditorConfig is awesome: https://EditorConfig.org
+# to learn more about compilerOptions, please visit notes/5-editorConfig/1-editorConfig.txt
+
 
 root = true
 
