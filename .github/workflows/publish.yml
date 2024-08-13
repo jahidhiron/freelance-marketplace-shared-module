@@ -17,8 +17,9 @@ jobs:
           node-version: '20.x'
       - run: npm install
       - run: npm run build
-      # > sign helps us to create a new file and then write content
-      # >> sign helps us to append file content
+      # > operator helps us to create a new file and then write content
+      # >> operator helps us to append file content
+      # | operator helps us to run multiple command at time
       - run: |
           echo @jahidhiron:https://npm.pkg.github.com/ > build/.npmrc
           echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> build/.npmrc
