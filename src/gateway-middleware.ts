@@ -33,13 +33,12 @@ export function verifyGatewayRequest(
     throw new NotAuthorizedError(message, invalidApiGetwayRequest);
   }
 
-  const token = req.headers.gatewaytoken as string;
-  if (!token) {
-    throw new NotAuthorizedError(message, invalidApiGetwayRequest);
-  }
-
   try {
-    const payload: IPayload = JWT.verify(token, '') as IPayload;
+    const token = req.headers.gatewaytoken as string;
+    const payload = JWT.verify(
+      token,
+      '1282722b942e08c8a6cb033aa6ce850e'
+    ) as IPayload;
     if (!tokens.includes(payload.id)) {
       throw new NotAuthorizedError(message, invalidPayload);
     }
