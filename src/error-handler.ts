@@ -1,14 +1,18 @@
 import { StatusCodes } from 'http-status-codes';
 
+export interface IErrorResponse {
+  message: string;
+  statusCode: number;
+  status: string;
+  comingFrom: string;
+  serializeErrors(): IError;
+}
+
 export interface IError {
   message: string;
   statusCode: number;
   status: string;
   comingFrom: string;
-}
-
-export interface IErrorResponse extends IError {
-  serializeErrors(): IError;
 }
 
 export abstract class CustomError extends Error {
@@ -32,8 +36,8 @@ export abstract class CustomError extends Error {
 }
 
 export class BadRequestError extends CustomError {
-  statusCode: number = StatusCodes.BAD_REQUEST;
-  status: string = 'error';
+  statusCode = StatusCodes.BAD_REQUEST;
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -41,8 +45,8 @@ export class BadRequestError extends CustomError {
 }
 
 export class NotFoundError extends CustomError {
-  statusCode: number = StatusCodes.NOT_FOUND;
-  status: string = 'error';
+  statusCode = StatusCodes.NOT_FOUND;
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -50,8 +54,8 @@ export class NotFoundError extends CustomError {
 }
 
 export class NotAuthorizedError extends CustomError {
-  statusCode: number = StatusCodes.UNAUTHORIZED;
-  status: string = 'error';
+  statusCode = StatusCodes.UNAUTHORIZED;
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -59,8 +63,8 @@ export class NotAuthorizedError extends CustomError {
 }
 
 export class FileTooLargeError extends CustomError {
-  statusCode: number = StatusCodes.REQUEST_TOO_LONG;
-  status: string = 'error';
+  statusCode = StatusCodes.REQUEST_TOO_LONG;
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -68,8 +72,8 @@ export class FileTooLargeError extends CustomError {
 }
 
 export class ServerError extends CustomError {
-  statusCode: number = StatusCodes.SERVICE_UNAVAILABLE;
-  status: string = 'error';
+  statusCode = StatusCodes.SERVICE_UNAVAILABLE;
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
