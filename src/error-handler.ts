@@ -23,6 +23,7 @@ export abstract class CustomError extends Error {
   constructor(message: string, comingFrom: string) {
     super(message);
     this.comingFrom = comingFrom;
+    Object.setPrototypeOf(this, CustomError.prototype);
   }
 
   serializeErrors(): IError {
@@ -41,6 +42,7 @@ export class BadRequestError extends CustomError {
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
+    Object.setPrototypeOf(this, BadRequestError.prototype);
   }
 }
 
@@ -50,6 +52,7 @@ export class NotFoundError extends CustomError {
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
+    Object.setPrototypeOf(this, NotFoundError.prototype);
   }
 }
 
@@ -59,6 +62,7 @@ export class NotAuthorizedError extends CustomError {
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
+    Object.setPrototypeOf(this, NotAuthorizedError.prototype);
   }
 }
 
@@ -68,6 +72,7 @@ export class FileTooLargeError extends CustomError {
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
+    Object.setPrototypeOf(this, FileTooLargeError.prototype);
   }
 }
 
@@ -77,6 +82,7 @@ export class ServerError extends CustomError {
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
+    Object.setPrototypeOf(this, ServerError.prototype);
   }
 }
 
